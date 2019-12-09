@@ -1,0 +1,27 @@
+<p>ads works!</p>
+<form>
+  <div>
+    <label for="owner">owner</label>
+    <input id="owner" type="text" [value]="owner" (input)="owner = $event.target.value">
+    <label for="title">title</label>
+    <input id="title" type="text" [value]="title" (input)="title = $event.target.value">
+    <label for="description">description</label>
+    <input id="description" type="text" [value]="description" (input)="description = $event.target.value">
+    <label for="price">price</label>
+    <input id="price" type="text" [value]="price" (input)="price = $event.target.value">
+    <button type="submit" (click)="createAd($event)">Create Ad</button>
+  </div>
+</form>
+
+<button (click)="createAd($event)">Create Ad</button>
+<button (click)="getAds($event)">Get Ads</button>
+
+<div *ngFor="let ad of ads">
+  <h1>{{ad.owner}}</h1>
+  <p>{{ad.title}}</p>
+  <p>{{ad.description}}</p>
+  <p>{{ad.price}}</p>
+  <button (click)="delete(ad.id)">Delete</button>
+  <br>
+</div>
+

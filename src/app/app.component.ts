@@ -10,12 +10,14 @@ export class AppComponent implements OnInit{
   constructor(private loginService: LoginService) { }
   token = ""
   username = ""
+  isLoggedIn = false
   title = 'frontend';
   ngOnInit() {
     this.loginService.loginData.subscribe((data) => {
       console.log("Subscription", data)
       this.username = data.username
       this.token = data.token
+      this.isLoggedIn = data.isLoggedIn
     })
   }
 }

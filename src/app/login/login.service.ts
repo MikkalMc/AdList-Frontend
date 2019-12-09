@@ -10,14 +10,11 @@ import { Subject } from 'rxjs';
 export class LoginService {
   constructor(private http: HttpClient) { }
 
-  // public loginData = {
-  //   username: "",
-  //   password: "",
-  //   token: "",
-  //   isLoggedIn: false
-  // }
 
   public loginData = new Subject<any>();
+  public bearerToken = ""
+  public userId = 0
+  public isLoggedIn = false
 
   login(username: string, password: string) {
 
@@ -28,10 +25,34 @@ export class LoginService {
     return this.http.post("http://localhost:8080/login", body, { observe: 'response' })
   }
 
+  getUserInfo(username: string) {
+    let body = {
+      "username": username,
+    }
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': this.bearerToken
+    })
+    console.log("hhhh", this.bearerToken)
+    this.http.post("http://localhost:8080/info", body, { observe: 'response', headers: headers })
+    .subscribe((resp) => {
+      if (resp.status == 200) {
+        this.isLoggedIn = true
+        this.userId = resp.body["id"]
+      } else {
+        console.log("Improper login credentials")
+      }
+    })
+  }
+
   setLogin(data: any) {
     this.loginData.next(data)
-    // this.loginData = data;
+    console.log("LOGIN DATA", data)
+    this.bearerToken = data.token
+
   }
+
+
 
   register(username: string, password: string) {
     let body = {

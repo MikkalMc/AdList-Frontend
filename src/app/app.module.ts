@@ -6,11 +6,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login/login.service';
+import { AdsComponent } from './ads/ads.component';
+import { UsersComponent } from './users/users.component';
+import { AdsService } from './ads/ads.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AdsComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +24,7 @@ import { LoginService } from './login/login.service';
   ],
   exports: [
   ],
-  providers: [LoginService],
+  providers: [LoginService, AdsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
