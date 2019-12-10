@@ -1,0 +1,25 @@
+<form>
+  <div>
+    <label for="title">title</label>
+    <input id="title" type="text" [value]="title" (input)="title = $event.target.value">
+    <label for="description">description</label>
+    <input id="description" type="text" [value]="description" (input)="description = $event.target.value">
+  </div>
+</form>
+
+<button (click)="createPost($event)">Create Post</button>
+<button (click)="getPostsByUserID($event)">Get Posts</button>
+
+<div *ngFor="let post of posts">
+  <div>
+    <h1>Title:</h1>
+    <p>{{post.title}}</p>
+  </div>
+  <div>
+    <h2>Description</h2>
+    <p>{{post.description}}</p>
+  </div>
+  <button (click)="delete(post.id)">Delete</button>
+  <br>
+</div>
+

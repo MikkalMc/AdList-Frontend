@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { environment } from '../../environments/environment.prod';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class LoginService {
 
   public loginData = new Subject<any>();
   public bearerToken = ""
-  public userId = 0
+  public userID = 0
   public isLoggedIn = false
 
   login(username: string, password: string) {
@@ -22,7 +23,7 @@ export class LoginService {
       "username": username,
       "password": password
     }
-    return this.http.post("http://localhost:8080/login", body, { observe: 'response' })
+    return this.http.post(environment.URL + "login", body, { observe: 'response' })
   }
 
   getUserInfo(username: string) {
@@ -33,12 +34,11 @@ export class LoginService {
       'Content-Type': 'application/json',
       'Authorization': this.bearerToken
     })
-    console.log("hhhh", this.bearerToken)
-    this.http.post("http://localhost:8080/info", body, { observe: 'response', headers: headers })
+    this.http.post(environment.URL + "info", body, { observe: 'response', headers: headers })
     .subscribe((resp) => {
       if (resp.status == 200) {
         this.isLoggedIn = true
-        this.userId = resp.body["id"]
+        this.userID = resp.body["id"]
       } else {
         console.log("Improper login credentials")
       }
@@ -59,6 +59,6 @@ export class LoginService {
       "username": username,
       "password": password
     }
-    return this.http.post("http://localhost:8080/registration", body)
+    return this.http.post(environment.URL + "registration", body)
   }
 }

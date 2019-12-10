@@ -6,15 +6,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginService } from './login/login.service';
-import { AdsComponent } from './ads/ads.component';
+import { PostsComponent } from './posts/posts.component';
 import { UsersComponent } from './users/users.component';
-import { AdsService } from './ads/ads.service';
+import { PostsService } from './posts/posts.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AdsComponent,
+    PostsComponent,
     UsersComponent
   ],
   imports: [
@@ -24,7 +24,7 @@ import { AdsService } from './ads/ads.service';
   ],
   exports: [
   ],
-  providers: [LoginService, AdsService],
+  providers: [LoginService, PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

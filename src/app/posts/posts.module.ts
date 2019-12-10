@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
-import { AdsComponent } from './ads.component';
+import { PostsComponent } from './posts.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AdsComponent
+    PostsComponent
   ],
   imports: [
-    AdsComponent,
+    PostsComponent,
     HttpClient,
   ],
   exports: [
-    AdsComponent
+    PostsComponent
   ]
 })
 
-export class AdsModule{ }
+export class PostsModule{ }
