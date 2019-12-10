@@ -4,14 +4,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    LoginComponent
   ],
   imports: [
-    LoginComponent,
-    HttpClient,
   ],
   exports: [
-    LoginComponent
   ]
 })
 

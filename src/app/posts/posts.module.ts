@@ -4,14 +4,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    PostsComponent
   ],
   imports: [
-    PostsComponent,
-    HttpClient,
   ],
   exports: [
-    PostsComponent
   ]
 })
 

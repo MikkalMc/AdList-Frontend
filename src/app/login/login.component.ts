@@ -11,7 +11,7 @@ import { FormBuilder } from '@angular/forms';
 export class LoginComponent implements OnInit {
   public username = ""
   public password = ""
-  private isRegister = false
+  public isRegister = false
 
   constructor(private loginService: LoginService) { }
 

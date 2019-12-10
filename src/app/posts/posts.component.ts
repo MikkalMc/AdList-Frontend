@@ -17,7 +17,8 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
   }
 
-  createPost() {
+  createPost(event: Event) {
+    event.preventDefault()
     this.postsService.createPost(this.title, this.description)
     .subscribe((el) => {
     })
